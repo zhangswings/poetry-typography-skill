@@ -39,7 +39,7 @@ git clone https://github.com/zhangswings/poetry-typography-skill.git ~/.codex/sk
 
 按字群区分春眠、鸟鸣、风雨和落花，用色彩与文字走向组织画面。
 
-![春晓文字画](examples/chun-xiao.png)
+<img src="examples/chun-xiao.png" alt="春晓文字画" width="360">
 
 ### 《江雪》· 单字领袖版
 
@@ -47,13 +47,13 @@ git clone https://github.com/zhangswings/poetry-typography-skill.git ~/.codex/sk
 
 用较大的主字引导阅读，以较小的对应字群构成山、径、舟和江面。
 
-![江雪单字领袖版](examples/jiang-xue-leader.png)
+<img src="examples/jiang-xue-leader.png" alt="江雪单字领袖版" width="360">
 
 ### 《江雪》· 字群剪影版
 
 让“千山”“孤舟”“蓑笠翁”等字群堆出景物体积，以淡墨和留白表现远近，“寒江”使用靛青。
 
-![江雪字群剪影版](examples/jiang-xue.png)
+<img src="examples/jiang-xue.png" alt="江雪字群剪影版" width="360">
 
 ## 检查标准与实际限制
 
