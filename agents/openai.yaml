@@ -1,0 +1,4 @@
+interface:
+  display_name: "诗词文字画"
+  short_description: "用原诗文字排出意象画面，让孩子沿清晰路径读完整首诗，并逐项检查字形和词义归属。"
+  default_prompt: "请用 $poetry-typography 把《江雪》做成只由原诗文字组成的图片，先分析事实与空间关系，再生成并检查。"
