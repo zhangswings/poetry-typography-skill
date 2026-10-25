@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>诗是有形状的 · 色彩与字群</title>
+<style>
+:root{--bg:#fff;--card:#f5f5f7;--text:#1d1d1f;--text2:#6e6e73;--text3:#86868b;--blue:#0071e3;--hair:rgba(0,0,0,.08)}
+@media (prefers-color-scheme:dark){:root{--bg:#000;--card:#1c1c1e;--text:#f5f5f7;--text2:#a1a1a6;--text3:#8e8e93;--blue:#2997ff;--hair:rgba(255,255,255,.12)}}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","PingFang SC",sans-serif;background:var(--bg);color:var(--text);font-size:15.5px;line-height:1.72;-webkit-font-smoothing:antialiased}
+nav{position:fixed;inset:0 0 auto 0;height:48px;z-index:100;background:rgba(255,255,255,.72);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid var(--hair);display:flex;align-items:center;justify-content:center;gap:20px;font-size:12.5px;color:var(--text2)}
+@media (prefers-color-scheme:dark){nav{background:rgba(0,0,0,.65)}}
+nav a{color:var(--text2);text-decoration:none}nav a:hover{color:var(--text)}
+#progress{position:fixed;top:46px;left:0;height:2px;background:var(--blue);width:0;z-index:101}
+main{max-width:900px;margin:0 auto;padding:0 22px 90px}
+.hero{margin-top:76px;border-radius:28px;padding:64px 48px 56px;color:#fff;background:#0b0b0f;
+  background-image:radial-gradient(120% 90% at 15% 0%,rgba(0,113,227,.45),transparent 55%),radial-gradient(90% 80% at 90% 100%,rgba(255,159,10,.22),transparent 60%);
+  position:relative;overflow:hidden}
+.hero .kicker{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:14px}
+.hero h1{font-size:clamp(32px,5.4vw,54px);line-height:1.07;letter-spacing:-.03em;font-weight:700;text-wrap:balance}
+.hero .sub{margin-top:18px;font-size:16px;color:rgba(255,255,255,.72);max-width:34em}
+.hero .meta{margin-top:26px;font-size:12.5px;color:rgba(255,255,255,.45)}
+section{margin-top:72px}
+.poem-head .kicker{font-size:11px;letter-spacing:.2em;color:var(--blue);text-transform:uppercase;font-weight:600}
+.poem-head h2{font-size:clamp(26px,4vw,38px);letter-spacing:-.02em;line-height:1.1;margin-top:6px;font-weight:700}
+.poem-head .fulltext{margin-top:10px;font-size:15px;color:var(--text2);font-family:"Kaiti SC","STKaiti","KaiTi",serif}
+.block{background:var(--card);border-radius:24px;box-shadow:inset 0 0 0 1px var(--hair);padding:28px 30px;margin-top:18px}
+.block>.label{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--blue);font-weight:600;margin-bottom:12px}
+ul.facts{list-style:none}
+ul.facts li{padding:7px 0;border-bottom:1px solid var(--hair);font-size:14.5px}
+ul.facts li:last-child{border-bottom:none}
+table.proj{width:100%;border-collapse:collapse;font-size:14px}
+table.proj th{text-align:left;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--text3);font-weight:600;padding:8px 10px;border-bottom:1px solid var(--hair)}
+table.proj td{padding:9px 10px;border-bottom:1px solid var(--hair);vertical-align:top}
+table.proj tr:last-child td{border-bottom:none}
+table.proj td:first-child{font-weight:600;white-space:nowrap}
+table.proj td:nth-child(2){font-family:"Kaiti SC","STKaiti","KaiTi",serif;color:var(--blue)}
+.artwork{background:var(--bg);border-radius:20px;padding:14px;box-shadow:inset 0 0 0 1px var(--hair);margin-top:14px}
+.artwork svg{width:100%;height:auto;display:block;border-radius:12px;box-shadow:inset 0 0 0 1px var(--hair)}
+.path{margin-top:14px;font-size:14px;color:var(--text2)}
+.path b{color:var(--text)}
+ol.checks{list-style:none;counter-reset:c}
+ol.checks li{counter-increment:c;display:flex;gap:12px;padding:9px 0;border-bottom:1px solid var(--hair);font-size:14.5px;align-items:flex-start}
+ol.checks li:last-child{border-bottom:none}
+ol.checks li::before{content:"✓";color:#1d7a3d;font-weight:700;flex:none}
+@media (prefers-color-scheme:dark){ol.checks li::before{color:#30d158}}
+.js .reveal{opacity:0;transform:translateY(20px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+.js .reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.js .reveal{opacity:1;transform:none;transition:opacity .4s ease}html{scroll-behavior:auto}}
+@media (prefers-contrast:more){.block,.artwork{box-shadow:inset 0 0 0 1.5px var(--text)}}
+@media print{nav,#progress{display:none}.hero{margin-top:0}.js .reveal{opacity:1!important;transform:none!important}section{page-break-before:always}section:first-of-type{page-break-before:avoid}}
+.foot{margin-top:80px;text-align:center;font-size:12.5px;color:var(--text3)}
+</style>
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+<nav><a href="#p1">春晓</a><a href="#p2">江雪（单字领袖版）</a><a href="#p3">江雪（字群堆成剪影）</a></nav>
+<div id="progress"></div>
+<main>
+<header class="hero reveal">
+  <div class="kicker">Poetry as Picture · v2 / v3 重制</div>
+  <h1>诗是有形状的 · 色彩与字群</h1>
+  <p class="sub">参考两张范例重做的三张图：一张学「配色分族 + 鸟群成阵」，两张学「字群堆成剪影」。同一首《江雪》，两种造形模式并置对照。</p>
+  <div class="meta">春晓 · 江雪（单字领袖）· 江雪（字群成体）／ 提示词已升级到 v2.1</div>
+</header>
+
+<section>
+  <div class="block reveal" style="margin-top:34px">
+    <div class="label">这一版学到什么 · 差距对照</div>
+    <ul class="facts">
+      <li>形体：参考图的物体外缘由字群边缘决定（山有峰、船有弧）；我原先只有「大字＋回声」，点出了意象却没堆出体积，所以像排版不像剪影。</li>
+      <li>密度：参考图中心密、边缘碎、山下有雾；我原先疏密均匀，物体没有明暗与前后。</li>
+      <li>主轴：参考图全诗沿一条长斜线推进；我原先块与块之间跳跃，读者走得不通。</li>
+      <li>主字量：参考图每句只用 1 个主字、全图 8 个以内；我原先每句都大字，处处用力等于没有重点。</li>
+      <li>过渡：参考图山脚、船底、云边都有雾化小字；我原先硬边直切，像贴纸不像国画。</li>
+      <li>用色：参考《江雪》全图只染「寒江」一色；我原先四色并用，颜色多反而弱。→ 已写进提示词：能只染一色就只染一色。</li>
+    </ul>
+  </div>
+</section>
+
+<section id="p1">
+  <div class="poem-head reveal">
+    <div class="kicker">v2 · 春</div>
+    <h2>春晓 <span style="font-size:.55em;color:var(--text3)">孟浩然</span></h2>
+    <p class="fulltext">春眠不觉晓，处处闻啼鸟。夜来风雨声，花落知多少。</p>
+  </div>
+  <div class="block reveal">
+    <div class="label">第一步 · 找事实</div>
+    <ul class="facts">
+      <li>春天的一个人睡得太沉（春眠），不知道天已经亮了（不觉晓）——睡意在左边，是横卧的。</li>
+      <li>到处都听见鸟叫（处处闻啼鸟）——鸟在右上的枝头与空中，位置高。</li>
+      <li>夜里（夜来）有风有雨（风雨声）——风斜着刮，雨往下落，声音散在中间。</li>
+      <li>花被打落，不知落了多少（花落知多少）——花瓣往下坠、往下堆；「多少」是没有答案的问句。</li>
+    </ul>
+  </div>
+  <div class="block reveal">
+    <div class="label">第二步 · 定投影</div>
+    <table class="proj">
+      <tr><th>意象</th><th>构成字</th><th>空间处理</th></tr>
+      <tr><td>春眠</td><td>春 眠 ＋ 苔绿「春眠」回声 10 处</td><td>大字横卧；回声围在四周，绿色＝草木春意</td></tr>
+      <tr><td>不觉晓</td><td>不 觉 晓</td><td>置于画面中部，四周无实物，只有空白——昏沉本身没有形状</td></tr>
+      <tr><td>处处闻啼鸟</td><td>处处 闻 啼 鸟</td><td>自左向右上抬升，字号递增，一字一顿推向枝头</td></tr>
+      <tr><td>啼鸟（群）</td><td>「啼鸟」×17（洋红）</td><td>成阵：每 3 个一组按 V 形排，分布在右上与中部天空</td></tr>
+      <tr><td>夜来风雨声</td><td>夜 来 ＋ 灰蓝「风雨声」×9</td><td>成线：整串字统一 −34° 斜切，越往下越小越淡</td></tr>
+      <tr><td>花落</td><td>花 落 ＋ 胭脂「花落」×27</td><td>成块：大字领坠，花瓣沿斜线散落并堆在左下</td></tr>
+      <tr><td>知多少</td><td>知 多 少 ＋ 灰「知多少」×12</td><td>问句散在花与空白之间，字号小、位置低——悬而未决</td></tr>
+    </table>
+  </div>
+  <div class="block reveal">
+    <div class="label">排出来</div>
+    <div class="artwork">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1280" font-family="'Kaiti SC','STKaiti','KaiTi',serif" fill="#1d1d1f">
+  <rect width="900" height="1280" fill="#fffdf9"/>
+  <!-- 底晕：一个极淡的「春」作水墨底 -->
+  <text x="-50" y="1250" font-size="440" fill="#5f7a3f" opacity="0.038">春</text>
+
+  <!-- 春眠：主字 + 苔绿回声簇 -->
+  <g fill="#5f7a3f">
+    <text x="58" y="142" font-size="26" opacity="0.85">春眠</text>
+    <text x="118" y="106" font-size="32" opacity="0.9">春眠</text>
+    <text x="190" y="96" font-size="26" opacity="0.75">春眠</text>
+    <text x="258" y="128" font-size="30" opacity="0.8">春眠</text>
+    <text x="58" y="216" font-size="22" opacity="0.6">春眠</text>
+    <text x="150" y="176" font-size="24" opacity="0.7">春眠</text>
+    <text x="300" y="176" font-size="22" opacity="0.55">春眠</text>
+    <text x="110" y="286" font-size="20" opacity="0.5">春眠</text>
+    <text x="220" y="272" font-size="18" opacity="0.45">春眠</text>
+    <text x="156" y="80" font-size="20" opacity="0.5">春</text>
+  </g>
+  <text x="104" y="252" font-size="142">春</text>
+  <text x="244" y="356" font-size="120" transform="rotate(-8 244 356)">眠</text>
+
+  <!-- 不觉晓 -->
+  <text x="366" y="322" font-size="64">不</text>
+  <text x="436" y="344" font-size="64">觉</text>
+  <text x="510" y="322" font-size="64">晓</text>
+
+  <!-- 处处闻啼鸟：沿右上方向升起的字形 -->
+  <text x="572" y="288" font-size="52">处</text>
+  <text x="620" y="316" font-size="48">处</text>
+  <text x="670" y="274" font-size="52">闻</text>
+  <text x="720" y="234" font-size="54">啼</text>
+  <text x="788" y="192" font-size="74">鸟</text>
+
+  <!-- 啼鸟群：洋红成阵，V 形雁阵 -->
+  <g fill="#d2367a">
+    <text x="598" y="142" font-size="26" opacity="0.85">啼鸟</text>
+    <text x="626" y="118" font-size="22" opacity="0.7">啼鸟</text>
+    <text x="652" y="140" font-size="19" opacity="0.55">鸟</text>
+    <text x="740" y="94" font-size="24" opacity="0.8">啼鸟</text>
+    <text x="766" y="72" font-size="20" opacity="0.65">啼鸟</text>
+    <text x="790" y="94" font-size="18" opacity="0.5">鸟</text>
+    <text x="848" y="216" font-size="22" opacity="0.6">啼鸟</text>
+    <text x="872" y="196" font-size="18" opacity="0.45">鸟</text>
+    <text x="502" y="216" font-size="22" opacity="0.55">啼鸟</text>
+    <text x="526" y="196" font-size="18" opacity="0.4">鸟</text>
+    <text x="648" y="446" font-size="24" opacity="0.6">啼鸟</text>
+    <text x="676" y="424" font-size="20" opacity="0.5">啼鸟</text>
+    <text x="700" y="446" font-size="17" opacity="0.4">鸟</text>
+    <text x="794" y="376" font-size="22" opacity="0.5">啼鸟</text>
+    <text x="818" y="358" font-size="17" opacity="0.4">鸟</text>
+    <text x="534" y="488" font-size="20" opacity="0.45">啼鸟</text>
+    <text x="558" y="470" font-size="16" opacity="0.35">鸟</text>
+  </g>
+
+  <!-- 夜来 -->
+  <text x="276" y="546" font-size="74">夜</text>
+  <text x="362" y="590" font-size="66">来</text>
+
+  <!-- 风雨声：灰蓝斜带，越下越淡 -->
+  <g fill="#93a7b8">
+    <text x="338" y="472" font-size="22" opacity="0.5" transform="rotate(-34 338 472)">风雨声</text>
+    <text x="388" y="514" font-size="21" opacity="0.45" transform="rotate(-34 388 514)">风雨声</text>
+    <text x="438" y="556" font-size="20" opacity="0.4" transform="rotate(-34 438 556)">风雨声</text>
+    <text x="488" y="598" font-size="19" opacity="0.35" transform="rotate(-34 488 598)">风雨声</text>
+    <text x="538" y="640" font-size="18" opacity="0.3" transform="rotate(-34 538 640)">风雨声</text>
+    <text x="556" y="542" font-size="20" opacity="0.35" transform="rotate(-34 556 542)">风雨声</text>
+    <text x="604" y="584" font-size="19" opacity="0.3" transform="rotate(-34 604 584)">风雨声</text>
+    <text x="652" y="626" font-size="18" opacity="0.25" transform="rotate(-34 652 626)">风雨声</text>
+    <text x="700" y="668" font-size="17" opacity="0.22" transform="rotate(-34 700 668)">风雨声</text>
+    <text x="418" y="702" font-size="16" opacity="0.25" transform="rotate(-34 418 702)">风</text>
+    <text x="596" y="702" font-size="16" opacity="0.22" transform="rotate(-34 596 702)">声</text>
+  </g>
+
+  <!-- 花落：主字 + 胭脂花堆（成块、成坠） -->
+  <g fill="#d98a9e">
+    <text x="126" y="614" font-size="30" opacity="0.8" transform="rotate(-20 126 614)">花落</text>
+    <text x="88" y="668" font-size="26" opacity="0.7" transform="rotate(25 88 668)">花落</text>
+    <text x="172" y="702" font-size="24" opacity="0.65" transform="rotate(10 172 702)">花</text>
+    <text x="116" y="738" font-size="22" opacity="0.6" transform="rotate(-35 116 738)">花落</text>
+    <text x="198" y="782" font-size="24" opacity="0.6" transform="rotate(15 198 782)">花</text>
+    <text x="146" y="818" font-size="20" opacity="0.5" transform="rotate(-10 146 818)">花落</text>
+    <text x="228" y="832" font-size="22" opacity="0.55" transform="rotate(30 228 832)">花</text>
+    <text x="100" y="862" font-size="18" opacity="0.45" transform="rotate(-25 100 862)">花</text>
+    <text x="182" y="882" font-size="20" opacity="0.5" transform="rotate(18 182 882)">花落</text>
+    <text x="258" y="872" font-size="18" opacity="0.45" transform="rotate(-15 258 872)">花</text>
+    <text x="306" y="908" font-size="20" opacity="0.5" transform="rotate(22 306 908)">花</text>
+    <text x="138" y="918" font-size="16" opacity="0.4" transform="rotate(-30 138 918)">花</text>
+    <text x="238" y="944" font-size="18" opacity="0.45" transform="rotate(12 238 944)">花落</text>
+    <text x="414" y="972" font-size="20" opacity="0.5" transform="rotate(20 414 972)">花</text>
+    <text x="494" y="1082" font-size="18" opacity="0.4" transform="rotate(-18 494 1082)">花落</text>
+    <text x="700" y="1122" font-size="16" opacity="0.4" transform="rotate(24 700 1122)">花</text>
+    <text x="150" y="600" font-size="22" opacity="0.6" transform="rotate(32 150 600)">花</text>
+    <text x="98" y="638" font-size="18" opacity="0.5" transform="rotate(-18 98 638)">花落</text>
+    <text x="206" y="656" font-size="20" opacity="0.55" transform="rotate(-28 206 656)">花</text>
+    <text x="118" y="694" font-size="18" opacity="0.5" transform="rotate(8 118 694)">花</text>
+    <text x="162" y="748" font-size="16" opacity="0.45" transform="rotate(40 162 748)">花</text>
+    <text x="248" y="806" font-size="18" opacity="0.5" transform="rotate(-22 248 806)">花落</text>
+  </g>
+  <text x="164" y="664" font-size="86" transform="rotate(12 164 664)">花</text>
+  <text x="272" y="748" font-size="82" transform="rotate(18 272 748)">落</text>
+
+  <!-- 知多少：一问散在花与空白之间 -->
+  <g fill="#1d1d1f">
+    <text x="556" y="906" font-size="74">知</text>
+    <text x="636" y="952" font-size="72">多</text>
+    <text x="716" y="998" font-size="72">少</text>
+  </g>
+  <g fill="#6e6e73">
+    <text x="464" y="1002" font-size="22" opacity="0.6">知多少</text>
+    <text x="536" y="1046" font-size="20" opacity="0.55">知多少</text>
+    <text x="616" y="1012" font-size="22" opacity="0.6">知多少</text>
+    <text x="696" y="1076" font-size="20" opacity="0.5">知多少</text>
+    <text x="766" y="1032" font-size="22" opacity="0.55">知多少</text>
+    <text x="812" y="960" font-size="18" opacity="0.45">知多少</text>
+    <text x="818" y="1064" font-size="16" opacity="0.42">知多少</text>
+    <text x="636" y="1132" font-size="20" opacity="0.5">知多少</text>
+    <text x="556" y="1162" font-size="18" opacity="0.45">知多少</text>
+    <text x="726" y="1152" font-size="18" opacity="0.45">知多少</text>
+    <text x="796" y="1196" font-size="16" opacity="0.4">知多少</text>
+    <text x="446" y="932" font-size="18" opacity="0.45">知多少</text>
+  </g>
+</svg>
+    </div>    <p class="path"><b>阅读路径：</b>左上「春」起，读横卧的「春眠」→ 中部空白读「不觉晓」→ 顺右上抬升读「处处闻啼鸟」，鸟群在最高处 → 折回中部读「夜来」，顺着 −34° 斜带读「风雨声」→ 落到左下花堆读「花落」→ 右下空白收在「知多少」。</p>
+  </div>
+  <div class="block reveal">
+    <div class="label">对照检查</div>
+    <ol class="checks">
+      <li>所有字均出自原诗；苔绿「春眠」、洋红「啼鸟」、灰蓝「风雨声」、胭脂「花落」都是原诗字，只是重复。</li>
+      <li>不看原诗能认出：卧睡的人、成群的鸟、斜风细雨、落花满地。</li>
+      <li>沿路径依次读出「春眠不觉晓／处处闻啼鸟／夜来风雨声／花落知多少」，一字不差。</li>
+      <li>「不觉晓」「知多少」不落在任何实物上，只在空白处表意——疑问字处理合规。</li>
+      <li>四色各司其义：绿＝春、洋红＝鸟、灰蓝＝风雨、胭脂＝花，一色一义，不串色。</li>
+      <li>主字 6 个、留白约 45%，最大字 2 个（春、花）。</li>
+    </ol>
+  </div>
+</section>
+
+<section id="p2">
+  <div class="poem-head reveal">
+    <div class="kicker">v2 · 江</div>
+    <h2>江雪（单字领袖版） <span style="font-size:.55em;color:var(--text3)">柳宗元</span></h2>
+    <p class="fulltext">千山鸟飞绝，万径人踪灭。孤舟蓑笠翁，独钓寒江雪。</p>
+  </div>
+  <div class="block reveal">
+    <div class="label">第一步 · 找事实</div>
+    <ul class="facts">
+      <li>极多的山（千山）横在天际，有远有近——远山淡、近山浓。</li>
+      <li>鸟飞光了（鸟飞绝），飞向右上角，越飞越小越淡。</li>
+      <li>所有的路（万径）上没有人（人踪灭）——路斜着下山，尽头是空白。</li>
+      <li>一只小船（孤舟），船上是穿蓑衣戴斗笠的老翁（蓑笠翁）——全图唯一的点景，必须小。</li>
+      <li>他一个人钓鱼（独钓），钓线垂进寒冷的江（寒江），四周是雪（雪）。</li>
+    </ul>
+  </div>
+  <div class="block reveal">
+    <div class="label">第二步 · 定投影</div>
+    <table class="proj">
+      <tr><th>意象</th><th>构成字</th><th>空间处理</th></tr>
+      <tr><td>千山（近）</td><td>千 ＋ 山 ×5</td><td>字号 122→54 递减横排，成一条山脊</td></tr>
+      <tr><td>千山（远）</td><td>山 ×6（淡墨）</td><td>后排更小更淡，作空气透视的远山</td></tr>
+      <tr><td>鸟飞绝</td><td>鸟 飞 绝 ＋ 小「鸟」×2</td><td>向右上角飞去，逐字变小、变淡，尽头几乎消失</td></tr>
+      <tr><td>万径</td><td>万 ＋ 径 ×3</td><td>沿对角线斜落，字号与透明度同步减弱</td></tr>
+      <tr><td>人踪灭</td><td>人 踪 灭</td><td>悬在右侧空白雪地，逐字变淡</td></tr>
+      <tr><td>寒江</td><td>江 ×7（灰蓝）</td><td>一字带横穿下方，中段留缺口给钓线穿过</td></tr>
+      <tr><td>孤舟蓑笠翁</td><td>孤 舟 舟 蓑 笠 翁</td><td>船身小、居水带缺口下方，是全图唯一点景</td></tr>
+      <tr><td>独钓寒江雪</td><td>独 钓 寒 江 雪</td><td>垂直向下，穿江面入水——一根钓线</td></tr>
+      <tr><td>雪</td><td>雪 ×18（淡墨）</td><td>散点，疏密不匀</td></tr>
+    </table>
+  </div>
+  <div class="block reveal">
+    <div class="label">排出来</div>
+    <div class="artwork">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1200" font-family="'Kaiti SC','STKaiti','KaiTi',serif" fill="#1a1a1a">
+  <rect width="900" height="1200" fill="#fbfcfe"/>
+  <!-- 底晕：雪 -->
+  <text x="560" y="1020" font-size="420" fill="#c9d6e0" opacity="0.05">雪</text>
+
+  <!-- 远山：小、淡、后排 -->
+  <g fill="#b9c3cb">
+    <text x="336" y="292" font-size="40" opacity="0.45">山</text>
+    <text x="396" y="272" font-size="46" opacity="0.5">山</text>
+    <text x="470" y="258" font-size="52" opacity="0.5">山</text>
+    <text x="546" y="276" font-size="44" opacity="0.45">山</text>
+    <text x="614" y="296" font-size="38" opacity="0.4">山</text>
+    <text x="700" y="314" font-size="34" opacity="0.35">山</text>
+  </g>
+
+  <!-- 千山：主山脊，字号递减排成峰 -->
+  <text x="132" y="252" font-size="122">千</text>
+  <text x="200" y="336" font-size="78">山</text>
+  <text x="296" y="304" font-size="104">山</text>
+  <text x="410" y="338" font-size="86">山</text>
+  <text x="512" y="374" font-size="68">山</text>
+  <text x="596" y="404" font-size="54">山</text>
+
+  <!-- 鸟飞绝：飞向右上角，越远越淡 -->
+  <text x="654" y="252" font-size="26" opacity="0.5">鸟</text>
+  <text x="678" y="230" font-size="20" opacity="0.38">鸟</text>
+  <text x="712" y="206" font-size="44">鸟</text>
+  <text x="758" y="172" font-size="40" transform="rotate(-18 758 172)">飞</text>
+  <text x="798" y="142" font-size="26" opacity="0.45">绝</text>
+
+  <!-- 万径：一路斜落 -->
+  <text x="158" y="566" font-size="62">万</text>
+  <g fill="#5a6a75">
+    <text x="236" y="604" font-size="46" opacity="0.85">径</text>
+    <text x="300" y="648" font-size="44" opacity="0.75">径</text>
+    <text x="362" y="692" font-size="42" opacity="0.65">径</text>
+  </g>
+
+  <!-- 人踪灭：淡在雪里 -->
+  <g fill="#6e7b85">
+    <text x="628" y="562" font-size="44" opacity="0.6">人</text>
+    <text x="688" y="602" font-size="40" opacity="0.5">踪</text>
+    <text x="742" y="646" font-size="34" opacity="0.4">灭</text>
+  </g>
+
+  <!-- 寒江：横向字带，中间留缺口给钓线 -->
+  <g fill="#7d93a6">
+    <text x="66" y="888" font-size="50" opacity="0.75">江</text>
+    <text x="156" y="906" font-size="44" opacity="0.55">江</text>
+    <text x="246" y="888" font-size="46" opacity="0.7">江</text>
+    <text x="556" y="906" font-size="44" opacity="0.55">江</text>
+    <text x="644" y="888" font-size="46" opacity="0.7">江</text>
+    <text x="732" y="906" font-size="44" opacity="0.55">江</text>
+    <text x="816" y="888" font-size="42" opacity="0.5">江</text>
+  </g>
+
+  <!-- 孤舟蓑笠翁：全图唯一点景，小 -->
+  <text x="280" y="840" font-size="44" transform="rotate(-16 280 840)">孤</text>
+  <text x="332" y="826" font-size="48">舟</text>
+  <text x="384" y="840" font-size="40" transform="rotate(14 384 840)">舟</text>
+  <text x="306" y="788" font-size="28" opacity="0.9">蓑</text>
+  <text x="344" y="776" font-size="30" opacity="0.9">笠</text>
+  <text x="330" y="736" font-size="38">翁</text>
+
+  <!-- 独钓寒江雪：一根垂线直入江心 -->
+  <text x="462" y="700" font-size="40">独</text>
+  <text x="462" y="758" font-size="40">钓</text>
+  <text x="462" y="816" font-size="40">寒</text>
+  <text x="462" y="874" font-size="40">江</text>
+  <text x="458" y="944" font-size="46">雪</text>
+
+  <!-- 雪：淡蓝散点，疏密不匀 -->
+  <g fill="#c9d6e0">
+    <text x="196" y="472" font-size="22" opacity="0.55">雪</text>
+    <text x="322" y="522" font-size="18" opacity="0.45">雪</text>
+    <text x="522" y="470" font-size="20" opacity="0.45">雪</text>
+    <text x="626" y="470" font-size="22" opacity="0.5">雪</text>
+    <text x="722" y="502" font-size="18" opacity="0.4">雪</text>
+    <text x="158" y="652" font-size="20" opacity="0.45">雪</text>
+    <text x="562" y="652" font-size="18" opacity="0.4">雪</text>
+    <text x="782" y="722" font-size="20" opacity="0.45">雪</text>
+    <text x="118" y="760" font-size="18" opacity="0.4">雪</text>
+    <text x="662" y="782" font-size="16" opacity="0.35">雪</text>
+    <text x="842" y="822" font-size="18" opacity="0.4">雪</text>
+    <text x="238" y="1000" font-size="20" opacity="0.45">雪</text>
+    <text x="398" y="1032" font-size="18" opacity="0.4">雪</text>
+    <text x="598" y="1012" font-size="20" opacity="0.45">雪</text>
+    <text x="758" y="1042" font-size="18" opacity="0.4">雪</text>
+    <text x="518" y="1082" font-size="16" opacity="0.3">雪</text>
+    <text x="298" y="1102" font-size="18" opacity="0.35">雪</text>
+    <text x="700" y="1122" font-size="16" opacity="0.3">雪</text>
+  </g>
+</svg>
+    </div>    <p class="path"><b>阅读路径：</b>左上「千」起，横读群山与远山「千山」→ 右上角读「鸟飞绝」→ 回左侧沿斜线读「万径」→ 右侧空白读「人踪灭」→ 降到江面缺口读「孤舟蓑笠翁」→ 顺钓线垂直向下读「独钓寒江雪」。</p>
+  </div>
+  <div class="block reveal">
+    <div class="label">对照检查</div>
+    <ol class="checks">
+      <li>所有字均出自原诗；山、径、江、雪、舟的重复用于造形与量感。</li>
+      <li>不看原诗能认出：雪山、空径、孤舟、垂钓、飞雪。</li>
+      <li>沿路径可一字不差读完四句，句序不乱。</li>
+      <li>意象皆由指称字构成；「人踪灭」不画人，只用三个字悬在空处表「没有」。</li>
+      <li>三色：墨、灰蓝（江）、淡墨（雪/远山），一色一义。</li>
+      <li>主字 8 个，留白约 50%——但山只是「一列字」，体积不足，见下一张。</li>
+    </ol>
+  </div>
+</section>
+
+<section id="p3">
+  <div class="poem-head reveal">
+    <div class="kicker">v3 · 字群成体</div>
+    <h2>江雪（字群堆成剪影） <span style="font-size:.55em;color:var(--text3)">柳宗元</span></h2>
+    <p class="fulltext">千山鸟飞绝，万径人踪灭。孤舟蓑笠翁，独钓寒江雪。</p>
+  </div>
+  <div class="block reveal">
+    <div class="label">第一步 · 找事实</div>
+    <ul class="facts">
+      <li>山是有厚度的（千山）：三座峰，峰顶窄、山脚宽，山脚化进雪里。</li>
+      <li>山路（万径）是一条斜线，越走越淡；走到尽头没有脚印（人踪灭）。</li>
+      <li>船是有体积的（孤舟）：甲板微拱、船底收弧，船里坐着蓑笠翁。</li>
+      <li>钓线（独钓）从船边垂下，穿进江面（寒江）；雪落满全图（雪）。</li>
+    </ul>
+  </div>
+  <div class="block reveal">
+    <div class="label">第二步 · 定投影</div>
+    <table class="proj">
+      <tr><th>意象</th><th>构成字</th><th>空间处理</th></tr>
+      <tr><td>山体（成体）</td><td>「千山」×约 300（12–27px）</td><td>按半宽 = 全宽 × t^1.2 逐行填充：峰顶窄、山脚宽；离轴越远越淡；山脚外扩小淡字做雾化</td></tr>
+      <tr><td>远山</td><td>「千山」×约 90（10–18px，淡灰）</td><td>两座后排小峰，透明度 0.42–0.6，压在近山之后</td></tr>
+      <tr><td>千山（主字）</td><td>千 山</td><td>82px，压在左峰顶上——全图最大的一组字</td></tr>
+      <tr><td>鸟飞绝</td><td>鸟 飞 绝 ＋ 小「鸟」×6</td><td>沿 −20° 斜向右下坠落，小「鸟」在前面带路，越走越淡</td></tr>
+      <tr><td>万径</td><td>万 径 ＋ 「万径」×12</td><td>成线：沿一条贝塞尔曲线排成点线，字号 22→12、透明度 0.85→0.4</td></tr>
+      <tr><td>人踪灭</td><td>人 踪 灭</td><td>接在径的尽头，沿 26° 继续下行，逐字变淡——径走完了，人没了</td></tr>
+      <tr><td>孤舟（船体）</td><td>「蓑笠翁」×约 60（12–14px）＋「孤舟」沿船底 13 处</td><td>先写甲板弧线与船底弧线，行内判断落点、且 x+字宽×3 &lt; 右边界才落字——字群不外溢轮廓</td></tr>
+      <tr><td>蓑笠翁（人）</td><td>「蓑笠翁」按 1-2-3-2 排成小三角</td><td>坐在甲板中段，越靠上越小</td></tr>
+      <tr><td>独钓</td><td>独 钓 ＋ 小「独钓」×5</td><td>从船右侧垂下，字号 17→11、颜色转靛青——钓线入水</td></tr>
+      <tr><td>寒江</td><td>「寒江」×56 ＋ 主字 ×2</td><td>颗粒带：分行分列散布，透明度 0.16–0.5；只有这一族染蓝</td></tr>
+      <tr><td>雪</td><td>雪 ×33</td><td>大小错落散布全图，淡墨色，不与任何实物相连</td></tr>
+    </table>
+  </div>
+  <div class="block reveal">
+    <div class="label">排出来</div>
+    <div class="artwork">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1200" font-family="'Kaiti SC','STKaiti','KaiTi',serif" fill="#1a1a1a">
+<rect width="900" height="1200" fill="#fcfdfe"/>
+<text x="809" y="168" font-size="16" fill="#242424" opacity="0.41">千山</text>
+<text x="804" y="181" font-size="12" fill="#242424" opacity="0.17">千山</text>
+<text x="802" y="187" font-size="13" fill="#242424" opacity="0.17">千山</text>
+<text x="795" y="200" font-size="11" fill="#242424" opacity="0.16">千山</text>
+<text x="791" y="212" font-size="10" fill="#242424" opacity="0.16">千山</text>
+<text x="816" y="213" font-size="12" fill="#242424" opacity="0.21">千山</text>
+<text x="792" y="226" font-size="12" fill="#242424" opacity="0.15">千山</text>
+<text x="810" y="221" font-size="11" fill="#242424" opacity="0.30">千山</text>
+<text x="788" y="237" font-size="10" fill="#242424" opacity="0.15">千山</text>
+<text x="804" y="238" font-size="14" fill="#242424" opacity="0.33">千山</text>
+<text x="826" y="233" font-size="11" fill="#242424" opacity="0.17">千山</text>
+<text x="799" y="243" font-size="10" fill="#242424" opacity="0.30">千山</text>
+<text x="821" y="244" font-size="10" fill="#242424" opacity="0.22">千山</text>
+<text x="776" y="254" font-size="10" fill="#242424" opacity="0.14">千山</text>
+<text x="814" y="255" font-size="13" fill="#242424" opacity="0.27">千山</text>
+<text x="770" y="266" font-size="10" fill="#242424" opacity="0.14">千山</text>
+<text x="788" y="265" font-size="10" fill="#242424" opacity="0.23">千山</text>
+<text x="807" y="267" font-size="11" fill="#242424" opacity="0.31">千山</text>
+<text x="829" y="265" font-size="10" fill="#242424" opacity="0.21">千山</text>
+<text x="784" y="278" font-size="10" fill="#242424" opacity="0.20">千山</text>
+<text x="813" y="282" font-size="10" fill="#242424" opacity="0.27">千山</text>
+<text x="833" y="280" font-size="10" fill="#242424" opacity="0.20">千山</text>
+<text x="760" y="290" font-size="10" fill="#242424" opacity="0.13">千山</text>
+<text x="781" y="288" font-size="10" fill="#242424" opacity="0.19">千山</text>
+<text x="791" y="288" font-size="10" fill="#242424" opacity="0.25">千山</text>
+<text x="808" y="292" font-size="10" fill="#242424" opacity="0.29">千山</text>
+<text x="827" y="288" font-size="10" fill="#242424" opacity="0.22">千山</text>
+<text x="842" y="293" font-size="10" fill="#242424" opacity="0.16">千山</text>
+<text x="755" y="304" font-size="10" fill="#242424" opacity="0.12">千山</text>
+<text x="772" y="303" font-size="10" fill="#242424" opacity="0.17">千山</text>
+<text x="803" y="304" font-size="10" fill="#242424" opacity="0.27">千山</text>
+<text x="829" y="302" font-size="10" fill="#242424" opacity="0.21">千山</text>
+<text x="847" y="304" font-size="10" fill="#242424" opacity="0.16">千山</text>
+<text x="751" y="314" font-size="10" fill="#242424" opacity="0.12">千山</text>
+<text x="776" y="313" font-size="10" fill="#242424" opacity="0.20">千山</text>
+<text x="791" y="309" font-size="10" fill="#242424" opacity="0.24">千山</text>
+<text x="804" y="315" font-size="10" fill="#242424" opacity="0.28">千山</text>
+<text x="820" y="313" font-size="10" fill="#242424" opacity="0.23">千山</text>
+<text x="837" y="315" font-size="10" fill="#242424" opacity="0.19">千山</text>
+<text x="846" y="312" font-size="10" fill="#242424" opacity="0.15">千山</text>
+<text x="744" y="322" font-size="10" fill="#242424" opacity="0.12">千山</text>
+<text x="758" y="325" font-size="10" fill="#242424" opacity="0.15">千山</text>
+<text x="774" y="324" font-size="10" fill="#242424" opacity="0.18">千山</text>
+<text x="780" y="326" font-size="10" fill="#242424" opacity="0.21">千山</text>
+<text x="793" y="322" font-size="10" fill="#242424" opacity="0.24">千山</text>
+<text x="807" y="322" font-size="10" fill="#242424" opacity="0.26">千山</text>
+<text x="821" y="325" font-size="10" fill="#242424" opacity="0.23">千山</text>
+<text x="845" y="321" font-size="10" fill="#242424" opacity="0.16">千山</text>
+<text x="858" y="323" font-size="10" fill="#242424" opacity="0.13">千山</text>
+<text x="739" y="337" font-size="10" fill="#242424" opacity="0.11">千山</text>
+<text x="755" y="333" font-size="10" fill="#242424" opacity="0.14">千山</text>
+<text x="766" y="336" font-size="10" fill="#242424" opacity="0.17">千山</text>
+<text x="792" y="337" font-size="10" fill="#242424" opacity="0.23">千山</text>
+<text x="806" y="338" font-size="10" fill="#242424" opacity="0.25">千山</text>
+<text x="860" y="336" font-size="10" fill="#242424" opacity="0.14">千山</text>
+<text x="732" y="349" font-size="10" fill="#242424" opacity="0.11">千山</text>
+<text x="743" y="345" font-size="10" fill="#242424" opacity="0.13">千山</text>
+<text x="768" y="349" font-size="10" fill="#242424" opacity="0.17">千山</text>
+<text x="777" y="348" font-size="10" fill="#242424" opacity="0.19">千山</text>
+<text x="790" y="346" font-size="10" fill="#242424" opacity="0.21">千山</text>
+<text x="816" y="347" font-size="10" fill="#242424" opacity="0.23">千山</text>
+<text x="824" y="347" font-size="10" fill="#242424" opacity="0.21">千山</text>
+<text x="846" y="347" font-size="10" fill="#242424" opacity="0.17">千山</text>
+<text x="857" y="350" font-size="10" fill="#242424" opacity="0.15">千山</text>
+<text x="867" y="346" font-size="10" fill="#242424" opacity="0.12">千山</text>
+<text x="802" y="356" font-size="11" fill="#98a3ab" opacity="0.17">千山</text>
+<text x="728" y="354" font-size="10" fill="#98a3ab" opacity="0.11">千山</text>
+<text x="749" y="341" font-size="12" fill="#98a3ab" opacity="0.15">千山</text>
+<text x="782" y="372" font-size="10" fill="#98a3ab" opacity="0.18">千山</text>
+<text x="820" y="384" font-size="14" fill="#98a3ab" opacity="0.14">千山</text>
+<text x="756" y="368" font-size="13" fill="#98a3ab" opacity="0.10">千山</text>
+<text x="828" y="383" font-size="14" fill="#98a3ab" opacity="0.13">千山</text>
+<text x="757" y="373" font-size="11" fill="#98a3ab" opacity="0.18">千山</text>
+<text x="864" y="372" font-size="11" fill="#98a3ab" opacity="0.14">千山</text>
+<text x="846" y="382" font-size="11" fill="#98a3ab" opacity="0.15">千山</text>
+<text x="775" y="388" font-size="11" fill="#98a3ab" opacity="0.22">千山</text>
+<text x="755" y="345" font-size="11" fill="#98a3ab" opacity="0.12">千山</text>
+<text x="738" y="360" font-size="13" fill="#98a3ab" opacity="0.23">千山</text>
+<text x="793" y="381" font-size="11" fill="#98a3ab" opacity="0.13">千山</text>
+<text x="827" y="382" font-size="10" fill="#98a3ab" opacity="0.13">千山</text>
+<text x="836" y="387" font-size="12" fill="#98a3ab" opacity="0.12">千山</text>
+<text x="807" y="379" font-size="14" fill="#98a3ab" opacity="0.26">千山</text>
+<text x="861" y="382" font-size="13" fill="#98a3ab" opacity="0.12">千山</text>
+<text x="729" y="369" font-size="14" fill="#98a3ab" opacity="0.24">千山</text>
+<text x="803" y="350" font-size="10" fill="#98a3ab" opacity="0.13">千山</text>
+<text x="862" y="391" font-size="10" fill="#98a3ab" opacity="0.19">千山</text>
+<text x="745" y="375" font-size="10" fill="#98a3ab" opacity="0.22">千山</text>
+<text x="777" y="364" font-size="14" fill="#98a3ab" opacity="0.16">千山</text>
+<text x="758" y="359" font-size="10" fill="#98a3ab" opacity="0.24">千山</text>
+<text x="753" y="364" font-size="12" fill="#98a3ab" opacity="0.16">千山</text>
+<text x="756" y="349" font-size="14" fill="#98a3ab" opacity="0.23">千山</text>
+<text x="777" y="344" font-size="13" fill="#98a3ab" opacity="0.19">千山</text>
+<text x="755" y="370" font-size="12" fill="#98a3ab" opacity="0.23">千山</text>
+<text x="766" y="387" font-size="11" fill="#98a3ab" opacity="0.23">千山</text>
+<text x="790" y="387" font-size="14" fill="#98a3ab" opacity="0.21">千山</text>
+<text x="850" y="380" font-size="13" fill="#98a3ab" opacity="0.13">千山</text>
+<text x="754" y="381" font-size="12" fill="#98a3ab" opacity="0.18">千山</text>
+<text x="725" y="358" font-size="14" fill="#98a3ab" opacity="0.11">千山</text>
+<text x="768" y="390" font-size="12" fill="#98a3ab" opacity="0.15">千山</text>
+<text x="700" y="195" font-size="18" fill="#242424" opacity="0.48">千山</text>
+<text x="700" y="206" font-size="15" fill="#242424" opacity="0.20">千山</text>
+<text x="689" y="220" font-size="14" fill="#242424" opacity="0.20">千山</text>
+<text x="688" y="234" font-size="15" fill="#242424" opacity="0.19">千山</text>
+<text x="707" y="248" font-size="12" fill="#242424" opacity="0.34">千山</text>
+<text x="674" y="260" font-size="12" fill="#242424" opacity="0.18">千山</text>
+<text x="700" y="261" font-size="17" fill="#242424" opacity="0.41">千山</text>
+<text x="670" y="271" font-size="12" fill="#242424" opacity="0.17">千山</text>
+<text x="691" y="270" font-size="11" fill="#242424" opacity="0.35">千山</text>
+<text x="716" y="274" font-size="12" fill="#242424" opacity="0.30">千山</text>
+<text x="701" y="287" font-size="15" fill="#242424" opacity="0.37">千山</text>
+<text x="728" y="288" font-size="11" fill="#242424" opacity="0.24">千山</text>
+<text x="655" y="295" font-size="10" fill="#242424" opacity="0.16">千山</text>
+<text x="678" y="298" font-size="11" fill="#242424" opacity="0.26">千山</text>
+<text x="699" y="298" font-size="12" fill="#242424" opacity="0.36">千山</text>
+<text x="744" y="300" font-size="10" fill="#242424" opacity="0.17">千山</text>
+<text x="650" y="311" font-size="10" fill="#242424" opacity="0.16">千山</text>
+<text x="668" y="313" font-size="10" fill="#242424" opacity="0.24">千山</text>
+<text x="707" y="311" font-size="11" fill="#242424" opacity="0.33">千山</text>
+<text x="723" y="311" font-size="10" fill="#242424" opacity="0.26">千山</text>
+<text x="745" y="309" font-size="10" fill="#242424" opacity="0.18">千山</text>
+<text x="659" y="325" font-size="10" fill="#242424" opacity="0.20">千山</text>
+<text x="677" y="323" font-size="10" fill="#242424" opacity="0.26">千山</text>
+<text x="713" y="323" font-size="11" fill="#242424" opacity="0.31">千山</text>
+<text x="725" y="321" font-size="11" fill="#242424" opacity="0.25">千山</text>
+<text x="744" y="325" font-size="10" fill="#242424" opacity="0.19">千山</text>
+<text x="635" y="337" font-size="10" fill="#242424" opacity="0.14">千山</text>
+<text x="653" y="337" font-size="10" fill="#242424" opacity="0.20">千山</text>
+<text x="672" y="338" font-size="10" fill="#242424" opacity="0.25">千山</text>
+<text x="727" y="338" font-size="10" fill="#242424" opacity="0.26">千山</text>
+<text x="741" y="335" font-size="10" fill="#242424" opacity="0.21">千山</text>
+<text x="760" y="336" font-size="10" fill="#242424" opacity="0.16">千山</text>
+<text x="631" y="347" font-size="10" fill="#242424" opacity="0.14">千山</text>
+<text x="643" y="351" font-size="10" fill="#242424" opacity="0.17">千山</text>
+<text x="672" y="346" font-size="10" fill="#242424" opacity="0.25">千山</text>
+<text x="707" y="349" font-size="10" fill="#242424" opacity="0.30">千山</text>
+<text x="721" y="350" font-size="10" fill="#242424" opacity="0.27">千山</text>
+<text x="737" y="348" font-size="10" fill="#242424" opacity="0.23">千山</text>
+<text x="755" y="348" font-size="10" fill="#242424" opacity="0.19">千山</text>
+<text x="771" y="350" font-size="10" fill="#242424" opacity="0.14">千山</text>
+<text x="621" y="364" font-size="10" fill="#242424" opacity="0.13">千山</text>
+<text x="637" y="365" font-size="10" fill="#242424" opacity="0.16">千山</text>
+<text x="651" y="361" font-size="10" fill="#242424" opacity="0.20">千山</text>
+<text x="667" y="363" font-size="10" fill="#242424" opacity="0.24">千山</text>
+<text x="685" y="363" font-size="10" fill="#242424" opacity="0.27">千山</text>
+<text x="701" y="360" font-size="10" fill="#242424" opacity="0.30">千山</text>
+<text x="733" y="360" font-size="10" fill="#242424" opacity="0.23">千山</text>
+<text x="753" y="362" font-size="10" fill="#242424" opacity="0.19">千山</text>
+<text x="709" y="414" font-size="13" fill="#98a3ab" opacity="0.24">千山</text>
+<text x="680" y="375" font-size="11" fill="#98a3ab" opacity="0.23">千山</text>
+<text x="677" y="391" font-size="14" fill="#98a3ab" opacity="0.22">千山</text>
+<text x="757" y="367" font-size="11" fill="#98a3ab" opacity="0.24">千山</text>
+<text x="774" y="411" font-size="13" fill="#98a3ab" opacity="0.23">千山</text>
+<text x="742" y="396" font-size="11" fill="#98a3ab" opacity="0.17">千山</text>
+<text x="754" y="372" font-size="14" fill="#98a3ab" opacity="0.12">千山</text>
+<text x="748" y="396" font-size="14" fill="#98a3ab" opacity="0.19">千山</text>
+<text x="631" y="404" font-size="10" fill="#98a3ab" opacity="0.13">千山</text>
+<text x="782" y="372" font-size="11" fill="#98a3ab" opacity="0.11">千山</text>
+<text x="654" y="401" font-size="10" fill="#98a3ab" opacity="0.24">千山</text>
+<text x="738" y="368" font-size="14" fill="#98a3ab" opacity="0.19">千山</text>
+<text x="701" y="365" font-size="11" fill="#98a3ab" opacity="0.17">千山</text>
+<text x="782" y="369" font-size="13" fill="#98a3ab" opacity="0.13">千山</text>
+<text x="709" y="391" font-size="11" fill="#98a3ab" opacity="0.25">千山</text>
+<text x="792" y="380" font-size="13" fill="#98a3ab" opacity="0.11">千山</text>
+<text x="662" y="388" font-size="10" fill="#98a3ab" opacity="0.16">千山</text>
+<text x="737" y="369" font-size="13" fill="#98a3ab" opacity="0.21">千山</text>
+<text x="749" y="405" font-size="10" fill="#98a3ab" opacity="0.20">千山</text>
+<text x="604" y="384" font-size="13" fill="#98a3ab" opacity="0.14">千山</text>
+<text x="713" y="388" font-size="10" fill="#98a3ab" opacity="0.24">千山</text>
+<text x="768" y="401" font-size="14" fill="#98a3ab" opacity="0.12">千山</text>
+<text x="725" y="413" font-size="12" fill="#98a3ab" opacity="0.25">千山</text>
+<text x="750" y="393" font-size="10" fill="#98a3ab" opacity="0.14">千山</text>
+<text x="641" y="402" font-size="12" fill="#98a3ab" opacity="0.15">千山</text>
+<text x="655" y="388" font-size="12" fill="#98a3ab" opacity="0.17">千山</text>
+<text x="677" y="369" font-size="14" fill="#98a3ab" opacity="0.12">千山</text>
+<text x="735" y="401" font-size="11" fill="#98a3ab" opacity="0.13">千山</text>
+<text x="608" y="388" font-size="10" fill="#98a3ab" opacity="0.12">千山</text>
+<text x="608" y="415" font-size="13" fill="#98a3ab" opacity="0.17">千山</text>
+<text x="615" y="412" font-size="13" fill="#98a3ab" opacity="0.25">千山</text>
+<text x="629" y="375" font-size="11" fill="#98a3ab" opacity="0.23">千山</text>
+<text x="677" y="381" font-size="13" fill="#98a3ab" opacity="0.20">千山</text>
+<text x="745" y="396" font-size="12" fill="#98a3ab" opacity="0.26">千山</text>
+<text x="401" y="105" font-size="29" fill="#242424" opacity="0.97">千山</text>
+<text x="395" y="127" font-size="22" fill="#242424" opacity="0.41">千山</text>
+<text x="390" y="150" font-size="23" fill="#242424" opacity="0.40">千山</text>
+<text x="382" y="170" font-size="22" fill="#242424" opacity="0.38">千山</text>
+<text x="374" y="188" font-size="21" fill="#242424" opacity="0.37">千山</text>
+<text x="410" y="189" font-size="23" fill="#242424" opacity="0.70">千山</text>
+<text x="360" y="212" font-size="22" fill="#242424" opacity="0.36">千山</text>
+<text x="355" y="232" font-size="20" fill="#242424" opacity="0.35">千山</text>
+<text x="395" y="228" font-size="22" fill="#242424" opacity="0.73">千山</text>
+<text x="436" y="227" font-size="22" fill="#242424" opacity="0.47">千山</text>
+<text x="346" y="249" font-size="19" fill="#242424" opacity="0.34">千山</text>
+<text x="383" y="246" font-size="23" fill="#242424" opacity="0.63">千山</text>
+<text x="417" y="246" font-size="20" fill="#242424" opacity="0.63">千山</text>
+<text x="451" y="247" font-size="20" fill="#242424" opacity="0.36">千山</text>
+<text x="330" y="267" font-size="21" fill="#242424" opacity="0.32">千山</text>
+<text x="406" y="268" font-size="22" fill="#242424" opacity="0.72">千山</text>
+<text x="446" y="268" font-size="21" fill="#242424" opacity="0.47">千山</text>
+<text x="325" y="286" font-size="19" fill="#242424" opacity="0.31">千山</text>
+<text x="357" y="283" font-size="22" fill="#242424" opacity="0.50">千山</text>
+<text x="430" y="286" font-size="22" fill="#242424" opacity="0.55">千山</text>
+<text x="464" y="285" font-size="19" fill="#242424" opacity="0.38">千山</text>
+<text x="310" y="305" font-size="18" fill="#242424" opacity="0.30">千山</text>
+<text x="348" y="307" font-size="22" fill="#242424" opacity="0.45">千山</text>
+<text x="381" y="308" font-size="23" fill="#242424" opacity="0.61">千山</text>
+<text x="480" y="305" font-size="21" fill="#242424" opacity="0.32">千山</text>
+<text x="303" y="324" font-size="20" fill="#242424" opacity="0.29">千山</text>
+<text x="331" y="327" font-size="17" fill="#242424" opacity="0.41">千山</text>
+<text x="369" y="325" font-size="22" fill="#242424" opacity="0.54">千山</text>
+<text x="400" y="323" font-size="23" fill="#242424" opacity="0.66">千山</text>
+<text x="431" y="327" font-size="20" fill="#242424" opacity="0.54">千山</text>
+<text x="468" y="327" font-size="19" fill="#242424" opacity="0.40">千山</text>
+<text x="293" y="345" font-size="16" fill="#242424" opacity="0.28">千山</text>
+<text x="326" y="342" font-size="19" fill="#242424" opacity="0.39">千山</text>
+<text x="355" y="341" font-size="18" fill="#242424" opacity="0.49">千山</text>
+<text x="385" y="342" font-size="20" fill="#242424" opacity="0.58">千山</text>
+<text x="451" y="344" font-size="18" fill="#242424" opacity="0.48">千山</text>
+<text x="482" y="342" font-size="16" fill="#242424" opacity="0.38">千山</text>
+<text x="278" y="361" font-size="17" fill="#242424" opacity="0.27">千山</text>
+<text x="314" y="361" font-size="17" fill="#242424" opacity="0.36">千山</text>
+<text x="346" y="365" font-size="17" fill="#242424" opacity="0.45">千山</text>
+<text x="372" y="365" font-size="20" fill="#242424" opacity="0.53">千山</text>
+<text x="405" y="362" font-size="20" fill="#242424" opacity="0.60">千山</text>
+<text x="471" y="363" font-size="20" fill="#242424" opacity="0.41">千山</text>
+<text x="502" y="363" font-size="19" fill="#242424" opacity="0.31">千山</text>
+<text x="329" y="382" font-size="16" fill="#242424" opacity="0.41">千山</text>
+<text x="356" y="384" font-size="19" fill="#242424" opacity="0.48">千山</text>
+<text x="385" y="381" font-size="17" fill="#242424" opacity="0.55">千山</text>
+<text x="412" y="384" font-size="20" fill="#242424" opacity="0.55">千山</text>
+<text x="444" y="380" font-size="19" fill="#242424" opacity="0.47">千山</text>
+<text x="475" y="382" font-size="17" fill="#242424" opacity="0.40">千山</text>
+<text x="506" y="380" font-size="15" fill="#242424" opacity="0.33">千山</text>
+<text x="459" y="419" font-size="13" fill="#98a3ab" opacity="0.11">千山</text>
+<text x="372" y="395" font-size="11" fill="#98a3ab" opacity="0.21">千山</text>
+<text x="541" y="383" font-size="14" fill="#98a3ab" opacity="0.26">千山</text>
+<text x="290" y="400" font-size="10" fill="#98a3ab" opacity="0.10">千山</text>
+<text x="372" y="403" font-size="10" fill="#98a3ab" opacity="0.16">千山</text>
+<text x="338" y="398" font-size="10" fill="#98a3ab" opacity="0.26">千山</text>
+<text x="455" y="413" font-size="14" fill="#98a3ab" opacity="0.14">千山</text>
+<text x="324" y="405" font-size="11" fill="#98a3ab" opacity="0.17">千山</text>
+<text x="272" y="388" font-size="12" fill="#98a3ab" opacity="0.15">千山</text>
+<text x="548" y="408" font-size="10" fill="#98a3ab" opacity="0.13">千山</text>
+<text x="426" y="428" font-size="12" fill="#98a3ab" opacity="0.19">千山</text>
+<text x="527" y="422" font-size="11" fill="#98a3ab" opacity="0.17">千山</text>
+<text x="367" y="420" font-size="13" fill="#98a3ab" opacity="0.16">千山</text>
+<text x="261" y="398" font-size="11" fill="#98a3ab" opacity="0.13">千山</text>
+<text x="415" y="385" font-size="11" fill="#98a3ab" opacity="0.16">千山</text>
+<text x="429" y="415" font-size="13" fill="#98a3ab" opacity="0.17">千山</text>
+<text x="552" y="411" font-size="13" fill="#98a3ab" opacity="0.13">千山</text>
+<text x="364" y="380" font-size="12" fill="#98a3ab" opacity="0.16">千山</text>
+<text x="331" y="377" font-size="11" fill="#98a3ab" opacity="0.22">千山</text>
+<text x="404" y="406" font-size="11" fill="#98a3ab" opacity="0.14">千山</text>
+<text x="357" y="384" font-size="12" fill="#98a3ab" opacity="0.12">千山</text>
+<text x="320" y="420" font-size="10" fill="#98a3ab" opacity="0.10">千山</text>
+<text x="345" y="396" font-size="10" fill="#98a3ab" opacity="0.24">千山</text>
+<text x="363" y="389" font-size="14" fill="#98a3ab" opacity="0.21">千山</text>
+<text x="339" y="408" font-size="13" fill="#98a3ab" opacity="0.11">千山</text>
+<text x="292" y="407" font-size="10" fill="#98a3ab" opacity="0.13">千山</text>
+<text x="372" y="401" font-size="11" fill="#98a3ab" opacity="0.18">千山</text>
+<text x="415" y="392" font-size="13" fill="#98a3ab" opacity="0.21">千山</text>
+<text x="291" y="387" font-size="12" fill="#98a3ab" opacity="0.19">千山</text>
+<text x="384" y="383" font-size="14" fill="#98a3ab" opacity="0.24">千山</text>
+<text x="316" y="391" font-size="12" fill="#98a3ab" opacity="0.20">千山</text>
+<text x="289" y="420" font-size="13" fill="#98a3ab" opacity="0.19">千山</text>
+<text x="495" y="427" font-size="12" fill="#98a3ab" opacity="0.21">千山</text>
+<text x="267" y="420" font-size="14" fill="#98a3ab" opacity="0.21">千山</text>
+<text x="178" y="166" font-size="28" fill="#242424" opacity="0.97">千山</text>
+<text x="169" y="184" font-size="22" fill="#242424" opacity="0.41">千山</text>
+<text x="164" y="203" font-size="21" fill="#242424" opacity="0.40">千山</text>
+<text x="156" y="221" font-size="19" fill="#242424" opacity="0.38">千山</text>
+<text x="193" y="223" font-size="22" fill="#242424" opacity="0.43">千山</text>
+<text x="149" y="237" font-size="18" fill="#242424" opacity="0.37">千山</text>
+<text x="185" y="238" font-size="22" fill="#242424" opacity="0.68">千山</text>
+<text x="176" y="257" font-size="24" fill="#242424" opacity="0.80">千山</text>
+<text x="133" y="279" font-size="19" fill="#242424" opacity="0.34">千山</text>
+<text x="166" y="276" font-size="21" fill="#242424" opacity="0.70">千山</text>
+<text x="120" y="296" font-size="17" fill="#242424" opacity="0.33">千山</text>
+<text x="185" y="295" font-size="19" fill="#242424" opacity="0.70">千山</text>
+<text x="213" y="297" font-size="19" fill="#242424" opacity="0.47">千山</text>
+<text x="111" y="318" font-size="17" fill="#242424" opacity="0.32">千山</text>
+<text x="139" y="317" font-size="20" fill="#242424" opacity="0.51">千山</text>
+<text x="176" y="313" font-size="22" fill="#242424" opacity="0.71">千山</text>
+<text x="206" y="314" font-size="19" fill="#242424" opacity="0.54">千山</text>
+<text x="238" y="314" font-size="16" fill="#242424" opacity="0.33">千山</text>
+<text x="96" y="331" font-size="15" fill="#242424" opacity="0.30">千山</text>
+<text x="134" y="333" font-size="18" fill="#242424" opacity="0.47">千山</text>
+<text x="196" y="335" font-size="18" fill="#242424" opacity="0.59">千山</text>
+<text x="229" y="332" font-size="17" fill="#242424" opacity="0.43">千山</text>
+<text x="121" y="354" font-size="17" fill="#242424" opacity="0.43">千山</text>
+<text x="179" y="351" font-size="20" fill="#242424" opacity="0.65">千山</text>
+<text x="211" y="351" font-size="20" fill="#242424" opacity="0.53">千山</text>
+<text x="239" y="355" font-size="17" fill="#242424" opacity="0.39">千山</text>
+<text x="75" y="368" font-size="13" fill="#242424" opacity="0.28">千山</text>
+<text x="135" y="369" font-size="15" fill="#242424" opacity="0.49">千山</text>
+<text x="165" y="368" font-size="19" fill="#242424" opacity="0.59">千山</text>
+<text x="194" y="368" font-size="19" fill="#242424" opacity="0.58">千山</text>
+<text x="219" y="367" font-size="18" fill="#242424" opacity="0.47">千山</text>
+<text x="64" y="388" font-size="14" fill="#242424" opacity="0.26">千山</text>
+<text x="92" y="387" font-size="15" fill="#242424" opacity="0.35">千山</text>
+<text x="119" y="390" font-size="15" fill="#242424" opacity="0.44">千山</text>
+<text x="149" y="390" font-size="16" fill="#242424" opacity="0.53">千山</text>
+<text x="205" y="385" font-size="18" fill="#242424" opacity="0.52">千山</text>
+<text x="233" y="390" font-size="17" fill="#242424" opacity="0.43">千山</text>
+<text x="238" y="405" font-size="10" fill="#98a3ab" opacity="0.25">千山</text>
+<text x="187" y="431" font-size="12" fill="#98a3ab" opacity="0.16">千山</text>
+<text x="246" y="412" font-size="14" fill="#98a3ab" opacity="0.17">千山</text>
+<text x="283" y="399" font-size="12" fill="#98a3ab" opacity="0.10">千山</text>
+<text x="184" y="438" font-size="13" fill="#98a3ab" opacity="0.16">千山</text>
+<text x="260" y="439" font-size="10" fill="#98a3ab" opacity="0.25">千山</text>
+<text x="171" y="440" font-size="13" fill="#98a3ab" opacity="0.14">千山</text>
+<text x="289" y="397" font-size="14" fill="#98a3ab" opacity="0.12">千山</text>
+<text x="127" y="434" font-size="14" fill="#98a3ab" opacity="0.21">千山</text>
+<text x="262" y="415" font-size="13" fill="#98a3ab" opacity="0.16">千山</text>
+<text x="115" y="443" font-size="12" fill="#98a3ab" opacity="0.20">千山</text>
+<text x="111" y="407" font-size="11" fill="#98a3ab" opacity="0.13">千山</text>
+<text x="243" y="424" font-size="11" fill="#98a3ab" opacity="0.13">千山</text>
+<text x="67" y="403" font-size="12" fill="#98a3ab" opacity="0.13">千山</text>
+<text x="44" y="417" font-size="10" fill="#98a3ab" opacity="0.16">千山</text>
+<text x="127" y="424" font-size="11" fill="#98a3ab" opacity="0.10">千山</text>
+<text x="86" y="399" font-size="14" fill="#98a3ab" opacity="0.12">千山</text>
+<text x="311" y="418" font-size="11" fill="#98a3ab" opacity="0.18">千山</text>
+<text x="253" y="442" font-size="12" fill="#98a3ab" opacity="0.11">千山</text>
+<text x="146" y="444" font-size="11" fill="#98a3ab" opacity="0.22">千山</text>
+<text x="183" y="397" font-size="13" fill="#98a3ab" opacity="0.25">千山</text>
+<text x="53" y="428" font-size="12" fill="#98a3ab" opacity="0.24">千山</text>
+<text x="274" y="429" font-size="14" fill="#98a3ab" opacity="0.26">千山</text>
+<text x="293" y="402" font-size="13" fill="#98a3ab" opacity="0.17">千山</text>
+<text x="167" y="440" font-size="14" fill="#98a3ab" opacity="0.14">千山</text>
+<text x="204" y="426" font-size="14" fill="#98a3ab" opacity="0.25">千山</text>
+<text x="184" y="419" font-size="12" fill="#98a3ab" opacity="0.19">千山</text>
+<text x="202" y="444" font-size="11" fill="#98a3ab" opacity="0.19">千山</text>
+<text x="129" y="409" font-size="14" fill="#98a3ab" opacity="0.15">千山</text>
+<text x="241" y="447" font-size="13" fill="#98a3ab" opacity="0.11">千山</text>
+<text x="305" y="435" font-size="13" fill="#98a3ab" opacity="0.12">千山</text>
+<text x="90" y="444" font-size="11" fill="#98a3ab" opacity="0.23">千山</text>
+<text x="258" y="423" font-size="12" fill="#98a3ab" opacity="0.11">千山</text>
+<text x="278" y="433" font-size="12" fill="#98a3ab" opacity="0.18">千山</text>
+<text x="835" y="318" font-size="15" fill="#242424" opacity="0.39">千山</text>
+<text x="834" y="332" font-size="10" fill="#242424" opacity="0.16">千山</text>
+<text x="832" y="343" font-size="10" fill="#242424" opacity="0.16">千山</text>
+<text x="823" y="355" font-size="10" fill="#242424" opacity="0.15">千山</text>
+<text x="846" y="354" font-size="10" fill="#242424" opacity="0.23">千山</text>
+<text x="815" y="365" font-size="10" fill="#242424" opacity="0.14">千山</text>
+<text x="842" y="365" font-size="15" fill="#242424" opacity="0.32">千山</text>
+<text x="814" y="378" font-size="10" fill="#242424" opacity="0.14">千山</text>
+<text x="833" y="373" font-size="10" fill="#242424" opacity="0.27">千山</text>
+<text x="850" y="374" font-size="10" fill="#242424" opacity="0.23">千山</text>
+<text x="804" y="387" font-size="10" fill="#242424" opacity="0.13">千山</text>
+<text x="822" y="385" font-size="10" fill="#242424" opacity="0.23">千山</text>
+<text x="839" y="384" font-size="10" fill="#242424" opacity="0.28">千山</text>
+<text x="858" y="384" font-size="10" fill="#242424" opacity="0.20">千山</text>
+<text x="813" y="396" font-size="10" fill="#242424" opacity="0.18">千山</text>
+<text x="828" y="397" font-size="10" fill="#242424" opacity="0.25">千山</text>
+<text x="846" y="395" font-size="10" fill="#242424" opacity="0.26">千山</text>
+<text x="862" y="400" font-size="10" fill="#242424" opacity="0.19">千山</text>
+<text x="879" y="400" font-size="10" fill="#242424" opacity="0.13">千山</text>
+<text x="792" y="407" font-size="10" fill="#242424" opacity="0.12">千山</text>
+<text x="807" y="412" font-size="10" fill="#242424" opacity="0.16">千山</text>
+<text x="817" y="408" font-size="10" fill="#242424" opacity="0.21">千山</text>
+<text x="831" y="408" font-size="10" fill="#242424" opacity="0.26">千山</text>
+<text x="859" y="407" font-size="10" fill="#242424" opacity="0.19">千山</text>
+<text x="879" y="410" font-size="10" fill="#242424" opacity="0.14">千山</text>
+<text x="793" y="424" font-size="10" fill="#242424" opacity="0.14">千山</text>
+<text x="823" y="423" font-size="10" fill="#242424" opacity="0.22">千山</text>
+<text x="835" y="423" font-size="10" fill="#242424" opacity="0.25">千山</text>
+<text x="850" y="424" font-size="10" fill="#242424" opacity="0.22">千山</text>
+<text x="864" y="418" font-size="10" fill="#242424" opacity="0.19">千山</text>
+<text x="874" y="420" font-size="10" fill="#242424" opacity="0.16">千山</text>
+<text x="890" y="422" font-size="10" fill="#242424" opacity="0.12">千山</text>
+<text x="778" y="431" font-size="10" fill="#242424" opacity="0.10">千山</text>
+<text x="789" y="434" font-size="10" fill="#242424" opacity="0.13">千山</text>
+<text x="800" y="433" font-size="10" fill="#242424" opacity="0.16">千山</text>
+<text x="826" y="431" font-size="10" fill="#242424" opacity="0.22">千山</text>
+<text x="842" y="431" font-size="10" fill="#242424" opacity="0.24">千山</text>
+<text x="853" y="431" font-size="10" fill="#242424" opacity="0.21">千山</text>
+<text x="866" y="429" font-size="10" fill="#242424" opacity="0.18">千山</text>
+<text x="892" y="430" font-size="10" fill="#242424" opacity="0.12">千山</text>
+<text x="820" y="464" font-size="12" fill="#98a3ab" opacity="0.17">千山</text>
+<text x="770" y="473" font-size="10" fill="#98a3ab" opacity="0.13">千山</text>
+<text x="820" y="447" font-size="11" fill="#98a3ab" opacity="0.21">千山</text>
+<text x="870" y="432" font-size="12" fill="#98a3ab" opacity="0.18">千山</text>
+<text x="797" y="469" font-size="13" fill="#98a3ab" opacity="0.22">千山</text>
+<text x="819" y="461" font-size="10" fill="#98a3ab" opacity="0.10">千山</text>
+<text x="852" y="480" font-size="12" fill="#98a3ab" opacity="0.25">千山</text>
+<text x="867" y="474" font-size="11" fill="#98a3ab" opacity="0.20">千山</text>
+<text x="852" y="446" font-size="13" fill="#98a3ab" opacity="0.12">千山</text>
+<text x="877" y="448" font-size="10" fill="#98a3ab" opacity="0.13">千山</text>
+<text x="852" y="472" font-size="13" fill="#98a3ab" opacity="0.20">千山</text>
+<text x="819" y="435" font-size="14" fill="#98a3ab" opacity="0.21">千山</text>
+<text x="775" y="481" font-size="12" fill="#98a3ab" opacity="0.15">千山</text>
+<text x="810" y="473" font-size="12" fill="#98a3ab" opacity="0.20">千山</text>
+<text x="771" y="470" font-size="10" fill="#98a3ab" opacity="0.16">千山</text>
+<text x="775" y="437" font-size="12" fill="#98a3ab" opacity="0.20">千山</text>
+<text x="765" y="479" font-size="11" fill="#98a3ab" opacity="0.19">千山</text>
+<text x="763" y="468" font-size="13" fill="#98a3ab" opacity="0.15">千山</text>
+<text x="857" y="478" font-size="10" fill="#98a3ab" opacity="0.13">千山</text>
+<text x="775" y="466" font-size="11" fill="#98a3ab" opacity="0.16">千山</text>
+<text x="830" y="453" font-size="10" fill="#98a3ab" opacity="0.17">千山</text>
+<text x="898" y="468" font-size="10" fill="#98a3ab" opacity="0.25">千山</text>
+<text x="816" y="473" font-size="10" fill="#98a3ab" opacity="0.21">千山</text>
+<text x="822" y="466" font-size="14" fill="#98a3ab" opacity="0.12">千山</text>
+<text x="894" y="435" font-size="12" fill="#98a3ab" opacity="0.19">千山</text>
+<text x="889" y="436" font-size="12" fill="#98a3ab" opacity="0.18">千山</text>
+<text x="767" y="452" font-size="13" fill="#98a3ab" opacity="0.13">千山</text>
+<text x="869" y="456" font-size="13" fill="#98a3ab" opacity="0.21">千山</text>
+<text x="821" y="470" font-size="10" fill="#98a3ab" opacity="0.19">千山</text>
+<text x="892" y="470" font-size="12" fill="#98a3ab" opacity="0.13">千山</text>
+<text x="815" y="439" font-size="12" fill="#98a3ab" opacity="0.16">千山</text>
+<text x="884" y="466" font-size="13" fill="#98a3ab" opacity="0.19">千山</text>
+<text x="890" y="449" font-size="14" fill="#98a3ab" opacity="0.12">千山</text>
+<text x="869" y="451" font-size="10" fill="#98a3ab" opacity="0.21">千山</text>
+<text x="112" y="196" font-size="82" fill="#1a1a1a" opacity="1.00">千</text>
+<text x="172" y="196" font-size="82" fill="#1a1a1a" opacity="1.00">山</text>
+<text x="392" y="156" font-size="48" fill="#242424" opacity="0.85">千山</text>
+<text x="636" y="410" font-size="15" fill="#3a3a3a" opacity="0.34">鸟</text>
+<text x="612" y="386" font-size="13" fill="#3a3a3a" opacity="0.27">鸟</text>
+<text x="660" y="386" font-size="12" fill="#3a3a3a" opacity="0.22">鸟</text>
+<text x="678" y="452" font-size="52" fill="#1a1a1a" opacity="1.00" transform="rotate(-12 678 452)">鸟</text>
+<text x="724" y="510" font-size="52" fill="#1a1a1a" opacity="1.00" transform="rotate(-20 724 510)">飞</text>
+<text x="770" y="568" font-size="52" fill="#1a1a1a" opacity="0.90" transform="rotate(-20 770 568)">绝</text>
+<text x="800" y="500" font-size="14" fill="#3a3a3a" opacity="0.30">鸟</text>
+<text x="818" y="474" font-size="12" fill="#3a3a3a" opacity="0.24">鸟</text>
+<text x="700" y="600" font-size="13" fill="#3a3a3a" opacity="0.24">鸟</text>
+<text x="74" y="486" font-size="52" fill="#1a1a1a" opacity="1.00">万</text>
+<text x="134" y="520" font-size="52" fill="#1a1a1a" opacity="1.00">径</text>
+<text x="196" y="540" font-size="22" fill="#333" opacity="0.85" transform="rotate(-14 196 540)">万径</text>
+<text x="219" y="552" font-size="21" fill="#333" opacity="0.81" transform="rotate(-14 219 552)">万径</text>
+<text x="241" y="563" font-size="20" fill="#333" opacity="0.77" transform="rotate(-14 241 563)">万径</text>
+<text x="264" y="575" font-size="19" fill="#333" opacity="0.73" transform="rotate(-14 264 575)">万径</text>
+<text x="287" y="587" font-size="18" fill="#333" opacity="0.69" transform="rotate(-14 287 587)">万径</text>
+<text x="310" y="598" font-size="17" fill="#333" opacity="0.65" transform="rotate(-14 310 598)">万径</text>
+<text x="334" y="610" font-size="17" fill="#333" opacity="0.60" transform="rotate(-14 334 610)">万径</text>
+<text x="357" y="621" font-size="16" fill="#333" opacity="0.56" transform="rotate(-14 357 621)">万径</text>
+<text x="381" y="633" font-size="15" fill="#333" opacity="0.52" transform="rotate(-14 381 633)">万径</text>
+<text x="404" y="645" font-size="14" fill="#333" opacity="0.48" transform="rotate(-14 404 645)">万径</text>
+<text x="428" y="656" font-size="13" fill="#333" opacity="0.44" transform="rotate(-14 428 656)">万径</text>
+<text x="452" y="668" font-size="12" fill="#333" opacity="0.40" transform="rotate(-14 452 668)">万径</text>
+<text x="464" y="706" font-size="48" fill="#1a1a1a" opacity="0.95" transform="rotate(26 464 706)">人</text>
+<text x="508" y="766" font-size="48" fill="#1a1a1a" opacity="0.82" transform="rotate(26 508 766)">踪</text>
+<text x="552" y="826" font-size="48" fill="#1a1a1a" opacity="0.66" transform="rotate(26 552 826)">灭</text>
+<text x="288" y="802" font-size="13" fill="#1a1a1a" opacity="0.42">蓑笠翁</text>
+<text x="327" y="802" font-size="12" fill="#1a1a1a" opacity="0.39">蓑笠翁</text>
+<text x="363" y="802" font-size="13" fill="#1a1a1a" opacity="0.43">蓑笠翁</text>
+<text x="403" y="802" font-size="13" fill="#1a1a1a" opacity="0.57">蓑笠翁</text>
+<text x="440" y="802" font-size="12" fill="#1a1a1a" opacity="0.59">蓑笠翁</text>
+<text x="481" y="802" font-size="13" fill="#1a1a1a" opacity="0.43">蓑笠翁</text>
+<text x="326" y="816" font-size="12" fill="#1a1a1a" opacity="0.33">蓑笠翁</text>
+<text x="366" y="816" font-size="14" fill="#1a1a1a" opacity="0.36">蓑笠翁</text>
+<text x="405" y="816" font-size="13" fill="#1a1a1a" opacity="0.36">蓑笠翁</text>
+<text x="447" y="816" font-size="13" fill="#1a1a1a" opacity="0.55">蓑笠翁</text>
+<text x="483" y="816" font-size="12" fill="#1a1a1a" opacity="0.38">蓑笠翁</text>
+<text x="329" y="830" font-size="12" fill="#1a1a1a" opacity="0.53">蓑笠翁</text>
+<text x="369" y="830" font-size="13" fill="#1a1a1a" opacity="0.51">蓑笠翁</text>
+<text x="407" y="830" font-size="14" fill="#1a1a1a" opacity="0.55">蓑笠翁</text>
+<text x="447" y="830" font-size="14" fill="#1a1a1a" opacity="0.59">蓑笠翁</text>
+<text x="330" y="844" font-size="12" fill="#1a1a1a" opacity="0.39">蓑笠翁</text>
+<text x="367" y="844" font-size="12" fill="#1a1a1a" opacity="0.40">蓑笠翁</text>
+<text x="404" y="844" font-size="14" fill="#1a1a1a" opacity="0.36">蓑笠翁</text>
+<text x="443" y="844" font-size="14" fill="#1a1a1a" opacity="0.56">蓑笠翁</text>
+<text x="368" y="858" font-size="13" fill="#1a1a1a" opacity="0.41">蓑笠翁</text>
+<text x="407" y="858" font-size="13" fill="#1a1a1a" opacity="0.50">蓑笠翁</text>
+<text x="446" y="858" font-size="13" fill="#1a1a1a" opacity="0.45">蓑笠翁</text>
+<text x="373" y="872" font-size="12" fill="#1a1a1a" opacity="0.59">蓑笠翁</text>
+<text x="410" y="872" font-size="14" fill="#1a1a1a" opacity="0.53">蓑笠翁</text>
+<text x="448" y="872" font-size="12" fill="#1a1a1a" opacity="0.35">蓑笠翁</text>
+<text x="380" y="716" font-size="15" fill="#1a1a1a" opacity="0.67">蓑笠翁</text>
+<text x="356" y="733" font-size="14" fill="#1a1a1a" opacity="0.57">蓑笠翁</text>
+<text x="404" y="733" font-size="13" fill="#1a1a1a" opacity="0.61">蓑笠翁</text>
+<text x="332" y="750" font-size="16" fill="#1a1a1a" opacity="0.78">蓑笠翁</text>
+<text x="380" y="750" font-size="13" fill="#1a1a1a" opacity="0.72">蓑笠翁</text>
+<text x="428" y="750" font-size="14" fill="#1a1a1a" opacity="0.58">蓑笠翁</text>
+<text x="356" y="767" font-size="15" fill="#1a1a1a" opacity="0.80">蓑笠翁</text>
+<text x="404" y="767" font-size="14" fill="#1a1a1a" opacity="0.90">蓑笠翁</text>
+<text x="380" y="784" font-size="13" fill="#1a1a1a" opacity="0.72">蓑笠翁</text>
+<text x="295" y="818" font-size="13" fill="#1a1a1a" opacity="0.85">孤舟</text>
+<text x="313" y="840" font-size="13" fill="#1a1a1a" opacity="0.85">孤舟</text>
+<text x="331" y="856" font-size="13" fill="#1a1a1a" opacity="0.85">孤舟</text>
+<text x="349" y="867" font-size="13" fill="#1a1a1a" opacity="0.85">孤舟</text>
+<text x="366" y="875" font-size="13" fill="#1a1a1a" opacity="0.85">孤舟</text>
+<text x="384" y="879" font-size="13" fill="#1a1a1a" opacity="0.85">孤舟</text>
+<text x="402" y="881" font-size="13" fill="#1a1a1a" opacity="0.85">孤舟</text>
+<text x="420" y="880" font-size="13" fill="#1a1a1a" opacity="0.85">孤舟</text>
+<text x="438" y="875" font-size="13" fill="#1a1a1a" opacity="0.85">孤舟</text>
+<text x="455" y="868" font-size="13" fill="#1a1a1a" opacity="0.85">孤舟</text>
+<text x="473" y="857" font-size="13" fill="#1a1a1a" opacity="0.85">孤舟</text>
+<text x="491" y="842" font-size="13" fill="#1a1a1a" opacity="0.85">孤舟</text>
+<text x="509" y="821" font-size="13" fill="#1a1a1a" opacity="0.85">孤舟</text>
+<text x="300" y="866" font-size="44" fill="#1a1a1a" opacity="1.00" transform="rotate(-14 300 866)">孤</text>
+<text x="348" y="850" font-size="46" fill="#1a1a1a" opacity="1.00">舟</text>
+<text x="402" y="866" font-size="38" fill="#1a1a1a" opacity="1.00" transform="rotate(12 402 866)">舟</text>
+<text x="626" y="656" font-size="54" fill="#1a1a1a" opacity="1.00" transform="rotate(-8 626 656)">独</text>
+<text x="668" y="716" font-size="54" fill="#1a1a1a" opacity="1.00" transform="rotate(-18 668 716)">钓</text>
+<text x="706" y="770" font-size="17" fill="#3f5a70" opacity="0.50">独钓</text>
+<text x="728" y="800" font-size="15" fill="#3f5a70" opacity="0.50">独钓</text>
+<text x="748" y="828" font-size="13" fill="#3f5a70" opacity="0.50">独钓</text>
+<text x="766" y="854" font-size="12" fill="#3f5a70" opacity="0.50">独钓</text>
+<text x="782" y="878" font-size="11" fill="#3f5a70" opacity="0.50">独钓</text>
+<text x="25" y="874" font-size="19" fill="#7d93a6" opacity="0.17">寒江</text>
+<text x="104" y="895" font-size="13" fill="#7d93a6" opacity="0.21">寒江</text>
+<text x="143" y="881" font-size="16" fill="#7d93a6" opacity="0.48">寒江</text>
+<text x="229" y="897" font-size="14" fill="#7d93a6" opacity="0.45">寒江</text>
+<text x="290" y="873" font-size="19" fill="#7d93a6" opacity="0.43">寒江</text>
+<text x="354" y="887" font-size="17" fill="#7d93a6" opacity="0.48">寒江</text>
+<text x="383" y="886" font-size="12" fill="#7d93a6" opacity="0.20">寒江</text>
+<text x="453" y="880" font-size="12" fill="#7d93a6" opacity="0.30">寒江</text>
+<text x="509" y="877" font-size="13" fill="#7d93a6" opacity="0.16">寒江</text>
+<text x="568" y="893" font-size="18" fill="#7d93a6" opacity="0.44">寒江</text>
+<text x="643" y="881" font-size="17" fill="#7d93a6" opacity="0.29">寒江</text>
+<text x="722" y="878" font-size="12" fill="#7d93a6" opacity="0.36">寒江</text>
+<text x="771" y="881" font-size="17" fill="#7d93a6" opacity="0.31">寒江</text>
+<text x="822" y="895" font-size="14" fill="#7d93a6" opacity="0.23">寒江</text>
+<text x="16" y="914" font-size="15" fill="#7d93a6" opacity="0.43">寒江</text>
+<text x="82" y="908" font-size="16" fill="#7d93a6" opacity="0.36">寒江</text>
+<text x="153" y="917" font-size="12" fill="#7d93a6" opacity="0.22">寒江</text>
+<text x="202" y="910" font-size="17" fill="#7d93a6" opacity="0.41">寒江</text>
+<text x="263" y="903" font-size="15" fill="#7d93a6" opacity="0.34">寒江</text>
+<text x="321" y="922" font-size="15" fill="#7d93a6" opacity="0.31">寒江</text>
+<text x="382" y="916" font-size="14" fill="#7d93a6" opacity="0.29">寒江</text>
+<text x="455" y="926" font-size="18" fill="#7d93a6" opacity="0.50">寒江</text>
+<text x="519" y="919" font-size="15" fill="#7d93a6" opacity="0.27">寒江</text>
+<text x="594" y="912" font-size="16" fill="#7d93a6" opacity="0.35">寒江</text>
+<text x="662" y="904" font-size="12" fill="#7d93a6" opacity="0.18">寒江</text>
+<text x="691" y="927" font-size="18" fill="#7d93a6" opacity="0.47">寒江</text>
+<text x="757" y="907" font-size="19" fill="#7d93a6" opacity="0.49">寒江</text>
+<text x="848" y="911" font-size="14" fill="#7d93a6" opacity="0.21">寒江</text>
+<text x="34" y="957" font-size="15" fill="#7d93a6" opacity="0.24">寒江</text>
+<text x="95" y="938" font-size="19" fill="#7d93a6" opacity="0.28">寒江</text>
+<text x="158" y="956" font-size="14" fill="#7d93a6" opacity="0.48">寒江</text>
+<text x="197" y="937" font-size="17" fill="#7d93a6" opacity="0.39">寒江</text>
+<text x="260" y="940" font-size="13" fill="#7d93a6" opacity="0.25">寒江</text>
+<text x="337" y="953" font-size="19" fill="#7d93a6" opacity="0.42">寒江</text>
+<text x="399" y="957" font-size="13" fill="#7d93a6" opacity="0.38">寒江</text>
+<text x="443" y="956" font-size="14" fill="#7d93a6" opacity="0.21">寒江</text>
+<text x="516" y="947" font-size="16" fill="#7d93a6" opacity="0.32">寒江</text>
+<text x="598" y="948" font-size="17" fill="#7d93a6" opacity="0.37">寒江</text>
+<text x="658" y="944" font-size="15" fill="#7d93a6" opacity="0.21">寒江</text>
+<text x="707" y="950" font-size="19" fill="#7d93a6" opacity="0.42">寒江</text>
+<text x="766" y="933" font-size="14" fill="#7d93a6" opacity="0.18">寒江</text>
+<text x="828" y="953" font-size="12" fill="#7d93a6" opacity="0.17">寒江</text>
+<text x="23" y="987" font-size="13" fill="#7d93a6" opacity="0.32">寒江</text>
+<text x="77" y="962" font-size="16" fill="#7d93a6" opacity="0.49">寒江</text>
+<text x="144" y="984" font-size="17" fill="#7d93a6" opacity="0.39">寒江</text>
+<text x="203" y="981" font-size="14" fill="#7d93a6" opacity="0.28">寒江</text>
+<text x="288" y="977" font-size="18" fill="#7d93a6" opacity="0.31">寒江</text>
+<text x="339" y="969" font-size="19" fill="#7d93a6" opacity="0.24">寒江</text>
+<text x="414" y="984" font-size="14" fill="#7d93a6" opacity="0.32">寒江</text>
+<text x="462" y="986" font-size="14" fill="#7d93a6" opacity="0.48">寒江</text>
+<text x="515" y="976" font-size="18" fill="#7d93a6" opacity="0.21">寒江</text>
+<text x="600" y="969" font-size="13" fill="#7d93a6" opacity="0.38">寒江</text>
+<text x="628" y="974" font-size="13" fill="#7d93a6" opacity="0.33">寒江</text>
+<text x="723" y="975" font-size="18" fill="#7d93a6" opacity="0.39">寒江</text>
+<text x="776" y="972" font-size="19" fill="#7d93a6" opacity="0.36">寒江</text>
+<text x="837" y="974" font-size="13" fill="#7d93a6" opacity="0.27">寒江</text>
+<text x="300" y="966" font-size="50" fill="#3f5a70" opacity="0.95">寒江</text>
+<text x="614" y="982" font-size="44" fill="#3f5a70" opacity="0.85">寒江</text>
+<text x="74" y="1046" font-size="38" fill="#bcc7d1" opacity="0.90">雪</text>
+<text x="188" y="1112" font-size="32" fill="#bcc7d1" opacity="0.90">雪</text>
+<text x="312" y="1152" font-size="42" fill="#bcc7d1" opacity="0.90">雪</text>
+<text x="466" y="1062" font-size="28" fill="#bcc7d1" opacity="0.90">雪</text>
+<text x="560" y="1132" font-size="36" fill="#bcc7d1" opacity="0.90">雪</text>
+<text x="684" y="1094" font-size="32" fill="#bcc7d1" opacity="0.90">雪</text>
+<text x="796" y="1142" font-size="40" fill="#bcc7d1" opacity="0.90">雪</text>
+<text x="124" y="988" font-size="24" fill="#bcc7d1" opacity="0.90">雪</text>
+<text x="492" y="1000" font-size="22" fill="#bcc7d1" opacity="0.90">雪</text>
+<text x="752" y="1016" font-size="26" fill="#bcc7d1" opacity="0.90">雪</text>
+<text x="410" y="1110" font-size="22" fill="#bcc7d1" opacity="0.90">雪</text>
+<text x="564" y="475" font-size="12" fill="#bcc7d1" opacity="0.49">雪</text>
+<text x="270" y="753" font-size="11" fill="#bcc7d1" opacity="0.28">雪</text>
+<text x="81" y="856" font-size="14" fill="#bcc7d1" opacity="0.44">雪</text>
+<text x="249" y="1089" font-size="15" fill="#bcc7d1" opacity="0.23">雪</text>
+<text x="330" y="472" font-size="11" fill="#bcc7d1" opacity="0.35">雪</text>
+<text x="435" y="642" font-size="17" fill="#bcc7d1" opacity="0.40">雪</text>
+<text x="452" y="1106" font-size="16" fill="#bcc7d1" opacity="0.26">雪</text>
+<text x="724" y="1017" font-size="16" fill="#bcc7d1" opacity="0.48">雪</text>
+<text x="602" y="1012" font-size="16" fill="#bcc7d1" opacity="0.28">雪</text>
+<text x="284" y="1073" font-size="11" fill="#bcc7d1" opacity="0.44">雪</text>
+<text x="289" y="608" font-size="17" fill="#bcc7d1" opacity="0.21">雪</text>
+<text x="460" y="680" font-size="17" fill="#bcc7d1" opacity="0.39">雪</text>
+<text x="594" y="722" font-size="16" fill="#bcc7d1" opacity="0.46">雪</text>
+<text x="841" y="547" font-size="13" fill="#bcc7d1" opacity="0.49">雪</text>
+<text x="755" y="657" font-size="12" fill="#bcc7d1" opacity="0.38">雪</text>
+<text x="675" y="621" font-size="16" fill="#bcc7d1" opacity="0.39">雪</text>
+<text x="143" y="960" font-size="11" fill="#bcc7d1" opacity="0.33">雪</text>
+<text x="374" y="718" font-size="17" fill="#bcc7d1" opacity="0.46">雪</text>
+<text x="507" y="1119" font-size="16" fill="#bcc7d1" opacity="0.48">雪</text>
+<text x="224" y="949" font-size="11" fill="#bcc7d1" opacity="0.21">雪</text>
+<text x="172" y="1011" font-size="12" fill="#bcc7d1" opacity="0.27">雪</text>
+<text x="547" y="516" font-size="12" fill="#bcc7d1" opacity="0.35">雪</text>
+</svg>
+    </div>    <p class="path"><b>阅读路径：</b>左上峰顶「千」起，横读三峰山体「千山」→ 右侧空处读「鸟飞绝」，顺其坠落方向 → 左侧斜径读「万径」，一路向下的点线 → 径尽头的空白读「人踪灭」→ 落到江面船体读「孤舟蓑笠翁」→ 顺垂下的细线读「独钓」→ 江面颗粒带读「寒江」→ 最后满图散落的「雪」。全程一条斜线走到底，不回头。</p>
+  </div>
+  <div class="block reveal">
+    <div class="label">对照检查</div>
+    <ol class="checks">
+      <li>所有字均出自原诗：「千山」「万径」「孤舟」「蓑笠翁」「独钓」「寒江」「雪」全部来自诗本身，重复只为堆形。</li>
+      <li>退三步看：三座峰、一条径、一只船、一条江带、满地雪——剪影成立。</li>
+      <li>沿路径可一字不差读完四句，句序不乱。</li>
+      <li>山＝千山，径＝万径，船＝孤舟／蓑笠翁，线＝独钓，江＝寒江，雪＝雪；「人踪灭」不画人。</li>
+      <li>全图只用两色：墨与靛青（寒江）。一色一义推到极致。</li>
+      <li>主字 2 组（千山）、留白约 50%；体字约 500 个只做体积，不抢读句。</li>
+      <li>字群外缘可辨（峰、弧、带），且山脚有雾化过渡，不是硬边方块。</li>
+    </ol>
+  </div>
+</section>
+<div class="foot">字的位置和走向，就是画面本身。</div>
+</main>
+<script>
+(function(){var els=document.querySelectorAll('.reveal');
+if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return}
+var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}})},{threshold:.08});
+els.forEach(function(e){io.observe(e)});
+var bar=document.getElementById('progress'),tk=false;
+window.addEventListener('scroll',function(){if(tk)return;tk=true;requestAnimationFrame(function(){var h=document.documentElement;bar.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';tk=false})},{passive:true});})();
+</script>
+</body>
+</html>
